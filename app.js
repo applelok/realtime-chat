@@ -16,6 +16,7 @@ app.get('/css/main.css', function(req, res){
 app.get('/js/main.js', function(req, res){
   res.sendfile('src/js/main.js');
 })
+
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
