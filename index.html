@@ -12,6 +12,7 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
     </style>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
   </head>
   <body>
     <ul id="messages"></ul>
@@ -19,16 +20,22 @@
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/js/main.js"></script>
 <script>
   var socket = io();
    $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
+    var msg = {
+      'msgVal': $('#m').val(),
+      'datetime': new Date(),
+    }
+    socket.emit('chat message', msg);
     $('#m').val('');
     return false;
   });
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+    $('#messages').append($('<li>').text(msg.msgVal));
+      // $('#messages').append($('<li>').text(msg.datetime).addClassName('timeSent'));
   });
 </script>
   </body>

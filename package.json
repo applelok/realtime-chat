@@ -4,7 +4,8 @@
   "description": "Using Node.js and Socket.io to create real-time chat",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node app.js & gulp watch"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,15 @@
     "url": "https://github.com/applelok/realtime-chat/issues"
   },
   "homepage": "https://github.com/applelok/realtime-chat#readme",
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.9.1",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-if": "^2.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-useref": "^3.0.8"
+  },
   "dependencies": {
     "express": "^4.10.2",
     "socket.io": "^1.4.6"
