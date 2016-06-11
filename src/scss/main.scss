@@ -26,6 +26,8 @@
 .clear{
 	clear: both;
 }
+
+$chat-bubble-height: 50px;
 body { 
 	font: 13px Helvetica, Arial; 
 }
@@ -67,16 +69,27 @@ form {
 	margin: 0; 
 	padding: 0; 
 	height: 70%;
-	li { 
+	div { 
 		padding: 5px 10px; 
 		width: 100%;
-		&.left{
-	      @extend .FL, .text-left, .clear;
-	      color: red;
+		&.msg-bubble{
+			@extend .clear;
+			min-height: $chat-bubble-height;
+			padding: 20px;
+			max-width: 100px;
+			color: white;
+			box-shadow: 1px 1px 5px #888888;
+			margin-bottom: 5px;
+		}
+		&.msg-bubble-left{
+	      	@extend .msg-bubble, .FL, .text-left;
+	      	background: #7DAF81;
+		    border-radius: 10px 10px 10px 0px;
 	    }
-	    &.right{
-	      @extend .FR, .text-right, .clear;
-	      color: blue;
-	    }
+	    &.msg-bubble-right{
+	      	@extend .msg-bubble, .FR, .text-right;
+	      	background: #7DAF81;
+	    	border-radius: 10px 10px 0px 10px;
+      	}
 	}
 }

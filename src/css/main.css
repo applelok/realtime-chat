@@ -4,19 +4,19 @@
   margin: 0;
   box-sizing: border-box; }
 
-.FL, #messages li.left {
+.FL, #messages div.msg-bubble-left {
   float: left; }
 
-.FR, #messages li.right {
+.FR, #messages div.msg-bubble-right {
   float: right; }
 
-.text-left, #messages li.left {
+.text-left, #messages div.msg-bubble-left {
   text-align: left; }
 
-.text-right, #messages li.right {
+.text-right, #messages div.msg-bubble-right {
   text-align: right; }
 
-.clear, #messages li.left, #messages li.right {
+.clear, #messages div.msg-bubble, #messages div.msg-bubble-left, #messages div.msg-bubble-right {
   clear: both; }
 
 body {
@@ -53,10 +53,19 @@ form {
   margin: 0;
   padding: 0;
   height: 70%; }
-  #messages li {
+  #messages div {
     padding: 5px 10px;
     width: 100%; }
-    #messages li.left {
-      color: red; }
-    #messages li.right {
-      color: blue; }
+    #messages div.msg-bubble, #messages div.msg-bubble-left, #messages div.msg-bubble-right {
+      min-height: 50px;
+      padding: 20px;
+      max-width: 100px;
+      color: white;
+      box-shadow: 1px 1px 5px #888888;
+      margin-bottom: 5px; }
+    #messages div.msg-bubble-left {
+      background: #7DAF81;
+      border-radius: 10px 10px 10px 0px; }
+    #messages div.msg-bubble-right {
+      background: #7DAF81;
+      border-radius: 10px 10px 0px 10px; }

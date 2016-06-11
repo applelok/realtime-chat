@@ -13,7 +13,7 @@
   </div>
   </div>
   <div id="main-chat" class="container">
-    <ul id="messages"></ul>
+    <div id="messages"></div>
     <div>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
@@ -49,9 +49,9 @@
     var className = "";
     console.log(msg.userName);
     isCurrentUser = (msg.userName === username);
-    className = (isCurrentUser) ? "right" : "left";
+    className = (isCurrentUser) ? "msg-bubble-right" : "msg-bubble-left";
     // if(!isCurrentUser){
-      $('<li>',{ class : className, text: msg.msgVal}).appendTo("#messages")
+      $('<div>',{ class : className, text: msg.msgVal}).appendTo("#messages")
       // $('#messages').append($('<li>').text(msg.msgVal));
     // }
       // $('#messages').append($('<li>').text(msg.datetime).addClassName('timeSent'));
