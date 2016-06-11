@@ -2,7 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var moment = require('moment');
-
+var userid = [];
 moment().format();
 
 app.get('/', function(req, res){

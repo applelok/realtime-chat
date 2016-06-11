@@ -5,7 +5,14 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css">
   </head>
   <body>
-  <div class="container">
+  <div id="register">
+  <div>
+  <h3>Your name is?</h3>
+  <input id="username" name="username" type="text"></input>
+  <button id="submit-username" >GO!</button>
+  </div>
+  </div>
+  <div id="main-chat" class="container">
     <ul id="messages"></ul>
     <div>
     <form action="">
@@ -15,22 +22,41 @@
   </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/js/chat.js"></script>
     <script src="/js/main.js"></script>
 <script>
+  var username = "";
   var socket = io();
-   $('form').submit(function(){
+  $('#main-chat').hide();
+  $('#submit-username').click(function(){
+    username = $('#username').val();
+    console.log(username);
+    $('#register').hide();
+    $('#main-chat').show();
+  });
+
+  $('form').submit(function(){
     var msg = {
       'msgVal': $('#m').val(),
       'datetime': new Date(),
+      'userName': username,
     }
     socket.emit('chat message', msg);
     $('#m').val('');
     return false;
   });
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg.msgVal));
+    var className = "";
+    console.log(msg.userName);
+    isCurrentUser = (msg.userName === username);
+    className = (isCurrentUser) ? "right" : "left";
+    // if(!isCurrentUser){
+      $('<li>',{ class : className, text: msg.msgVal}).appendTo("#messages")
+      // $('#messages').append($('<li>').text(msg.msgVal));
+    // }
       // $('#messages').append($('<li>').text(msg.datetime).addClassName('timeSent'));
   });
+ 
 </script>
 
   </body>
